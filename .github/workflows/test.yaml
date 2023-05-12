@@ -41,6 +41,8 @@ jobs:
       - name: Test
         shell: bash
         run: | 
+          pwd
+          ls
           bash test.sh -p -a http://127.0.0.1:5000
 
       - name: Upload coverage
