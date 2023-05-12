@@ -17,8 +17,8 @@ jobs:
     services:
       osrm-iran:
         image: mojixcoder/osrm-iran:v5.25.0
-      ports:
-        - 5000:5000
+        ports:
+          - 5000:5000
 
     strategy:
       matrix:
