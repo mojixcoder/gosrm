@@ -54,7 +54,7 @@ func WithSteps(steps bool) Option {
 
 // WithAnnotations makes OSRM to return additional metadata for each coordinate along the route geometry.
 // Can be used in route, match and trip services.
-func WithAnnotations(annotations Annotations) optionImpl {
+func WithAnnotations(annotations Annotations) Option {
 	return optionImpl(func(u *url.URL) {
 		setQueryParam(u, "annotations", string(annotations))
 	})
@@ -155,7 +155,7 @@ func WithGaps(gaps Gaps) Option {
 	})
 }
 
-// Withtidy allows the input track modification to obtain better matching quality for noisy tracks.
+// WithTidy allows the input track modification to obtain better matching quality for noisy tracks.
 // Can be used in match service.
 func WithTidy(tidy bool) Option {
 	return optionImpl(func(u *url.URL) {
@@ -216,7 +216,7 @@ func WithCustomOption(option, value string) Option {
 	})
 }
 
-// WithBearing limits the search to segments with given bearing in degrees towards true north in a clockwise direction.
+// WithBearings limits the search to segments with given bearing in degrees towards true north in a clockwise direction.
 // It's a general option and can be used in all services.
 func WithBearings(bearings []Bearing) Option {
 	return optionImpl(func(u *url.URL) {

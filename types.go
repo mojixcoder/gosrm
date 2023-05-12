@@ -240,7 +240,7 @@ type (
 		Steps []RouteStep[T] `json:"steps"`
 	}
 
-	// Route represents a route through (potentially multiple) waypoints.
+	// RouteType represents a route through (potentially multiple) waypoints.
 	RouteType[T GeometryType] struct {
 		// Distance is the distance traveled by the route, in meters.
 		Distance float32 `json:"distance"`
