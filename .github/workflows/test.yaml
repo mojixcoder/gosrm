@@ -1,0 +1,52 @@
+name: Test
+
+on:
+  push:
+    branches: 
+      - "main"
+  pull_request:
+    branches: 
+      - "main"
+
+env:
+  # Upload coverage only for this go version.
+  LATEST_GO_VERSION: "1.20"
+
+jobs:
+  test:
+    services:
+      osrm-iran:
+        image: mojixcoder/osrm-iran:v5.25.0
+        ports:
+          - 5000:5000
+
+    strategy:
+      matrix:
+        os: ["ubuntu-latest"]
+        go: ["1.18", "1.19", "1.20"]
+
+    name: ${{ matrix.os }} & Go ${{ matrix.go }}
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up ${{ matrix.go }}
+        uses: actions/setup-go@v3
+        with:
+          go-version: ${{ matrix.go }}
+
+      - name: Test
+        shell: bash
+        run: | 
+          bash test.sh -p -a http://127.0.0.1:5000
+
+      - name: Upload coverage
+        if: success() && matrix.go == env.LATEST_GO_VERSION && matrix.os == 'ubuntu-latest'
+        uses: codacy/codacy-coverage-reporter-action@v1
+        with:
+          project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
+          coverage-reports: "coverage.out"
+          force-coverage-parser: "go"
