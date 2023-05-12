@@ -41,9 +41,9 @@ jobs:
       - name: Test
         shell: bash
         run: | 
+          bash test.sh -p -a http://127.0.0.1:5000
           pwd
           ls
-          bash test.sh -p -a http://127.0.0.1:5000
 
       - name: Upload coverage
         if: success() && matrix.go == env.LATEST_GO_VERSION && matrix.os == 'ubuntu-latest'
