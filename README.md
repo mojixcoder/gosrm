@@ -18,7 +18,7 @@ Requires Go >= 1.18: `go get github.com/mojixcoder/gosrm`
 
 #### How To Use
 ---
-```go
+``` go
 package main
 
 import (
