@@ -1,3 +1,7 @@
+![test](https://github.com/mojixcoder/gosrm/actions/workflows/test.yml/badge.svg)
+[![code quality](https://app.codacy.com/project/badge/Grade/a9ca122539bc4d198a370dab1d6081a9)](https://app.codacy.com/gh/mojixcoder/gosrm/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
+[![coverage](https://app.codacy.com/project/badge/Coverage/a9ca122539bc4d198a370dab1d6081a9)](https://app.codacy.com/gh/mojixcoder/gosrm/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_coverage)
+
 ### GOSRM
 ---
 **GOSRM** is an OSRM client written in Go. It implements all OSRM 5.x installations.  
