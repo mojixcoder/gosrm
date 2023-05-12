@@ -15,7 +15,7 @@ type NearestResponse struct {
 	Waypoints []NearestWaypoint `json:"waypoints"`
 }
 
-// Nearset snaps a coordinate to the street network and returns the nearest n matches.
+// Nearest snaps a coordinate to the street network and returns the nearest n matches.
 func Nearest(ctx context.Context, osrm OSRMClient, req Request, opts ...Option) (*NearestResponse, error) {
 	u := req.buildURLPath(*osrm.baseURL, nearestServiceURL)
 

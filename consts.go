@@ -101,10 +101,10 @@ const (
 	// GeometryPolyline is the geometry polyline type.
 	GeometryPolyline Geometry = "polyline"
 
-	// GeometryPolyline is the geometry polyline6 type.
+	// GeometryPolyline6 is the geometry polyline6 type.
 	GeometryPolyline6 Geometry = "polyline6"
 
-	// GeometryPolyline is the geometry geojson type.
+	// GeometryGeoJSON is the geometry geojson type.
 	GeometryGeoJSON Geometry = "geojson"
 )
 
@@ -163,7 +163,7 @@ const (
 	// AnnotationsDataSources is data sources annotations.
 	AnnotationsDataSources Annotations = "datasources"
 
-	// AnnotationsDurationSpeed is duration and distance annotations.
+	// AnnotationsDurationDistance is duration and distance annotations.
 	AnnotationsDurationDistance Annotations = "duration,distance"
 )
 
