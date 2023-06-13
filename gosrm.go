@@ -9,10 +9,17 @@ import (
 )
 
 type (
+	// HTTPClient is the interface that can be used to do HTTP calls.
+	HTTPClient interface {
+		Do(req *http.Request) (*http.Response, error)
+	}
+
 	// OSRMClient is the base type with helper methods to call OSRM APIs.
 	// It only holds the base OSRM URL.
 	OSRMClient struct {
 		baseURL *url.URL
+
+		client HTTPClient
 	}
 
 	// Request is the OSRM's request structure.
@@ -29,12 +36,25 @@ type (
 
 // New returns a new OSRM client.
 func New(baseURL string) (OSRMClient, error) {
+	var client OSRMClient
+
 	u, err := url.Parse(baseURL)
 	if err != nil {
-		return OSRMClient{}, err
+		return client, err
 	}
 
-	return OSRMClient{baseURL: u}, nil
+	client.baseURL = u
+	client.SetHTTPClient(NewHTTPClient(HTTPClientConfig{}))
+
+	return client, nil
+}
+
+// SetHTTPClient sets the HTTP client that will be used to call OSRM.
+func (osrm *OSRMClient) SetHTTPClient(client HTTPClient) {
+	if client == nil {
+		panic("http client can't be nil")
+	}
+	osrm.client = client
 }
 
 // get calls the given URL and parses the response.
@@ -45,7 +65,7 @@ func (osrm OSRMClient) get(ctx context.Context, url string, out any) error {
 	}
 	req = req.WithContext(ctx)
 
-	res, err := http.DefaultClient.Do(req)
+	res, err := osrm.client.Do(req)
 	if err != nil {
 		return err
 	}

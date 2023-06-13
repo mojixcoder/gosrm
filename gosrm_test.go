@@ -13,6 +13,10 @@ import (
 
 const invalidURL string = "postgres://user:abc{DEf1=ghi@example.com:5432/db?sslmode=require"
 
+func newOSRMClient() OSRMClient {
+	return OSRMClient{client: NewHTTPClient(HTTPClientConfig{})}
+}
+
 func TestNew(t *testing.T) {
 	testCases := []struct {
 		name, baseURL string
@@ -38,8 +42,22 @@ func TestNew(t *testing.T) {
 	}
 }
 
+func TestOSRMClient_SetHTTPClient(t *testing.T) {
+	osrm := newOSRMClient()
+
+	assert.PanicsWithValue(t, "http client can't be nil", func() {
+		osrm.SetHTTPClient(nil)
+	})
+
+	client := NewHTTPClient(HTTPClientConfig{MaxConcurrency: 10})
+
+	osrm.SetHTTPClient(client)
+
+	assert.Equal(t, client, osrm.client)
+}
+
 func TestOSRMClient_get(t *testing.T) {
-	osrm := OSRMClient{}
+	osrm := newOSRMClient()
 	srv := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte("{\"message\": \"Ok\"}"))
 	}))
@@ -59,7 +77,7 @@ func TestOSRMClient_get(t *testing.T) {
 }
 
 func TestOSRMClient_applyOpts(t *testing.T) {
-	osrm := OSRMClient{}
+	osrm := newOSRMClient()
 	u := url.URL{}
 
 	osrm.applyOpts(&u, []Option{
