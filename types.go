@@ -287,3 +287,8 @@ type (
 		Confidence float32 `json:"confidence"`
 	}
 )
+
+// IsOk returns true if request could be processed as expected by OSRM.
+func (res Response) IsOk() bool {
+	return res.Code == CodeOK
+}
