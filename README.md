@@ -18,7 +18,7 @@ If you want to get the most out of this package I highly recommend to read OSRM 
 
 #### Installation
 ---
-Requires Go >= 1.18: `go get github.com/mojixcoder/gosrm`
+Requires Go >= 1.21: `go get github.com/mojixcoder/gosrm`
 
 #### How To Use
 ---
