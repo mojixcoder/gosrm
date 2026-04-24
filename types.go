@@ -149,7 +149,7 @@ type (
 		Weight float32 `json:"weight"`
 
 		// Exits is the exit numbers or names of the way. Will be undefined if there are no exit numbers or names.
-		Exits uint16 `json:"exits"`
+		Exits string `json:"exits"`
 
 		// Name of the way along which travel proceeds.
 		Name string `json:"name"`
