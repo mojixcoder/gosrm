@@ -171,7 +171,7 @@ type (
 		DrivingSide string `json:"driving_side"`
 
 		// Destinations of the way. Will be undefined if there are no destinations.
-		Destinations []Waypoint `json:"destinations"`
+		Destinations string `json:"destinations"`
 
 		// Mode is a string signifying the mode of transportation.
 		Mode string `json:"mode"`
