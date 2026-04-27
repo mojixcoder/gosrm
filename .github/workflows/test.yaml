@@ -10,7 +10,7 @@ on:
 
 env:
   # Upload coverage only for this go version.
-  LATEST_GO_VERSION: "1.23"
+  LATEST_GO_VERSION: "1.26"
 
 jobs:
   test:
@@ -23,7 +23,7 @@ jobs:
     strategy:
       matrix:
         os: ["ubuntu-latest"]
-        go: ["1.21", "1.22", "1.23"]
+        go: ["1.24", "1.25", "1.26"]
 
     name: ${{ matrix.os }} & Go ${{ matrix.go }}
 
@@ -33,7 +33,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Set up ${{ matrix.go }}
+      - name: Set up Go ${{ matrix.go }}
         uses: actions/setup-go@v3
         with:
           go-version: ${{ matrix.go }}
@@ -45,7 +45,7 @@ jobs:
 
       - name: Upload coverage
         if: success() && matrix.go == env.LATEST_GO_VERSION && matrix.os == 'ubuntu-latest'
-        uses: codacy/codacy-coverage-reporter-action@v1
+        uses: codacy/codacy-coverage-reporter-action@v1.3
         with:
           project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
           coverage-reports: "coverage.out"
