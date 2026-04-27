@@ -123,7 +123,7 @@ type (
 		// BearingBefore is the clockwise angle from true north to the direction of travel immediately before the maneuver.
 		BearingBefore float32 `json:"bearing_before"`
 
-		// BearingAfter is the clockwise angle from true north to the direction of travel immediately before the maneuver.
+		// BearingAfter is the clockwise angle from true north to the direction of travel immediately after the maneuver.
 		BearingAfter float32 `json:"bearing_after"`
 
 		// Type is a string indicating the type of maneuver.
@@ -209,7 +209,7 @@ type (
 		Nodes []uint64 `json:"nodes"`
 
 		// Weight is the weights between each pair of coordinates. Does not include any turn costs.
-		Weight []float32 `json:"Weight"`
+		Weight []float32 `json:"weight"`
 
 		// Speed is the convenience field, calculation of distance / duration rounded to one decimal place.
 		Speed []float32 `json:"speed"`

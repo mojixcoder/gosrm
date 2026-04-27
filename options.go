@@ -98,7 +98,7 @@ func WithSources(sources []uint16) Option {
 	})
 }
 
-// WithDestinations	uses location with given index as destination.
+// WithDestinations uses location with given index as destination.
 // If the slice is empty uses all.
 // Can be used in table service.
 func WithDestinations(destinations []uint16) Option {

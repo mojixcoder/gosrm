@@ -69,6 +69,7 @@ func (osrm OSRMClient) get(ctx context.Context, url string, out any) error {
 	if err != nil {
 		return err
 	}
+	defer res.Body.Close()
 
 	return json.NewDecoder(res.Body).Decode(out)
 }
