@@ -123,7 +123,7 @@ type (
 		// BearingBefore is the clockwise angle from true north to the direction of travel immediately before the maneuver.
 		BearingBefore float32 `json:"bearing_before"`
 
-		// BearingAfter is the clockwise angle from true north to the direction of travel immediately before the maneuver.
+		// BearingAfter is the clockwise angle from true north to the direction of travel immediately after the maneuver.
 		BearingAfter float32 `json:"bearing_after"`
 
 		// Type is a string indicating the type of maneuver.
