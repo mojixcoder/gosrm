@@ -209,7 +209,7 @@ type (
 		Nodes []uint64 `json:"nodes"`
 
 		// Weight is the weights between each pair of coordinates. Does not include any turn costs.
-		Weight []float32 `json:"Weight"`
+		Weight []float32 `json:"weight"`
 
 		// Speed is the convenience field, calculation of distance / duration rounded to one decimal place.
 		Speed []float32 `json:"speed"`

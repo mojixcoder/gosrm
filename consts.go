@@ -43,8 +43,8 @@ const (
 	// CodeOK is returned when request could be processed as expected.
 	CodeOK Code = "Ok"
 
-	// CodeInvalidUrl is returned when URL string is invalid.
-	CodeInvalidUrl Code = "InvalidUrl"
+	// CodeInvalidURL is returned when URL string is invalid.
+	CodeInvalidURL Code = "InvalidUrl"
 
 	// CodeInvalidService is returned when service name is invalid.
 	CodeInvalidService Code = "InvalidService"
